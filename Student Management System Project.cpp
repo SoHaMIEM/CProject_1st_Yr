@@ -21,13 +21,13 @@ void add_student() {
     struct student s;
     printf("Enter name: ");
     fflush(stdin);
-    gets(s.name);
+    gets(s.name);  // Read the student's name
     fflush(stdin);
     printf("Enter roll number: ");
-    scanf("%d", &s.roll_number);
+    scanf("%d", &s.roll_number);  // Read the student's roll number
     printf("Enter marks: ");
-    scanf("%f", &s.marks);
-    students[num_students] = s;
+    scanf("%f", &s.marks);  // Read the student's marks
+    students[num_students] = s;  // Add the student to the array of students
     num_students++;
 }
 
@@ -39,6 +39,7 @@ void list_students() {
     printf("Roll No.\tName\t\t\t\tMarks\n");
     printf("--------\t----\t\t\t\t-----\n");
     for (int i = 0; i < num_students; i++) {
+        // Print the roll number, name, and marks of each student
         printf("%d\t\t%-30s\t%.2f\n", students[i].roll_number, students[i].name, students[i].marks);
     }
 }
@@ -50,11 +51,14 @@ void search_student() {
     }
     int roll_number;
     printf("Enter roll number to search: ");
-    scanf("%d", &roll_number);
+    scanf("%d", &roll_number);  
+	// Read the roll number to search
     for (int i = 0; i < num_students; i++) {
         if (students[i].roll_number == roll_number) {
-            printf("Roll No.\tName\tMarks\n");
-            printf("%d\t\t%s\t%.2f\n", students[i].roll_number, students[i].name, students[i].marks);
+            // If a student with the given roll number is found, print their details
+            printf("Roll No.\tName\t\t\t\tMarks\n");
+            printf("--------\t----\t\t\t\t-----\n");
+            printf("%d\t\t%-30s\t%.2f\n", students[i].roll_number, students[i].name, students[i].marks);
             return;
         }
     }
@@ -68,9 +72,10 @@ void delete_student() {
     }
     int roll_number;
     printf("Enter roll number to delete: ");
-    scanf("%d", &roll_number);
+    scanf("%d", &roll_number);  // Read the roll number to delete
     for (int i = 0; i < num_students; i++) {
         if (students[i].roll_number == roll_number) {
+            // If a student with the given roll number is found, delete them by shifting the array elements
             for (int j = i; j < num_students - 1; j++) {
                 students[j] = students[j + 1];
             }
@@ -95,23 +100,38 @@ int main() {
         scanf("%d", &choice);
         switch (choice) {
             case 1:
-                add_student();
+                add_student();  
+				// Call the function to add a student
                 break;
             case 2:
-                list_students();
+                list_students();  
+				// Call the function to list all students
                 break;
             case 3:
-                search_student();
+                search_student();  
+				// Call the function to search for a student
                 break;
             case 4:
-                delete_student();
+                delete_student();  
+				// Call the function to delete a student
                 break;
             case 5:
                 printf("Exiting program...\n");
-                exit(0);
+                exit(0);  // Exit the program
             default:
                 printf("Invalid choice! Try again.\n");
         }
     }
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
